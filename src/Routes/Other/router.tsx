@@ -1,7 +1,5 @@
-import { FC } from "react";
-import { RouteObject } from "react-router";
-import { MainLayout } from "@components/Layout";
+import { Navigate, RouteObject } from "react-router";
 
 export const OtherRouters: RouteObject[] = [
-  { path: "*", element: <MainLayout /> },
+  { path: "*", element: <Navigate to="/main/home" /> },
 ];

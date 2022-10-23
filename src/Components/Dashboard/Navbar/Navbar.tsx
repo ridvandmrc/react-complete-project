@@ -7,13 +7,16 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import {  useNavigate } from "react-router";
 
-const MenuItem: FC<{ children: ReactNode; inMenu?: boolean }> = ({
-  children,
-  inMenu = false,
-}) => {
+const MenuItem: FC<{
+  children: ReactNode;
+  inMenu?: boolean;
+  onClick?: () => void;
+}> = ({ children, inMenu = false, onClick }) => {
   return (
     <Typography
+      onClick={onClick}
       variant="h6"
       sx={{
         marginRight: !inMenu ? 3 : 0,
@@ -29,17 +32,7 @@ const MenuItem: FC<{ children: ReactNode; inMenu?: boolean }> = ({
   );
 };
 
-const MenuList: FC<{ inMenu?: boolean }> = ({ inMenu }) => (
-  <>
-    <MenuItem inMenu={inMenu}>Home</MenuItem>
-    <MenuItem inMenu={inMenu}>About</MenuItem>
-    <MenuItem inMenu={inMenu}>Service</MenuItem>
-    <MenuItem inMenu={inMenu}>Tour Package</MenuItem>
-    <MenuItem inMenu={inMenu}>Tour Package</MenuItem>
-    <MenuItem inMenu={inMenu}>Pages</MenuItem>
-    <MenuItem inMenu={inMenu}>Contact Us</MenuItem>
-  </>
-);
+
 
 export const Navbar = () => {
   const matches = useMediaQuery((theme) =>
@@ -47,6 +40,19 @@ export const Navbar = () => {
   );
   const menuRef = useRef(null);
   const [menuVisibility, setMenuVisibility] = useState(false);
+  const navigate = useNavigate();
+
+  const MenuList: FC<{ inMenu?: boolean }> = ({ inMenu }) => (
+    <>
+      <MenuItem inMenu={inMenu} onClick={()=> navigate('./home')}>Home</MenuItem>
+      <MenuItem inMenu={inMenu} onClick={()=> navigate('./about')}>About</MenuItem>
+      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Service</MenuItem>
+      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Tour Package</MenuItem>
+      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Tour Package</MenuItem>
+      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Pages</MenuItem>
+      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Contact Us</MenuItem>
+    </>
+  );
 
   return (
     <Stack
