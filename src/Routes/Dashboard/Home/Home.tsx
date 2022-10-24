@@ -1,6 +1,7 @@
 import { AboutImage, MosqueImage, ShipImage } from "@assets";
 import { Button, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import { FC } from "react";
+import { loaderService } from "src/Service";
 
 export const Home: FC = () => {
   const matches = useMediaQuery((theme) =>
@@ -28,7 +29,7 @@ export const Home: FC = () => {
           boxSizing: "border-box",
         }}
       >
-        <Stack sx={{ width: 1, maxHeight: "60rem" }}>
+        <Stack sx={{ width: 1, maxHeight: "60rem", maxWidth: "45rem" }}>
           <AboutImage />
         </Stack>
         <Stack sx={{ width: 1, marginLeft: matches ? "0" : "-10rem" }}>
@@ -70,6 +71,7 @@ export const Home: FC = () => {
                 marginTop: "3rem",
                 color: "background.paper",
               }}
+              onClick={() => loaderService.disableLoader()}
             >
               Book Now
             </Button>

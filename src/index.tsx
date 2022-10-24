@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import { DefaultTheme, History } from "@utils";
 import { Route } from "@routes";
 import { ThemeProvider } from "@mui/material";
+import { Provider } from "react-redux";
+import { store } from "@store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +15,9 @@ root.render(
   <React.StrictMode>
     <History>
       <ThemeProvider theme={DefaultTheme}>
-        <Route />
+        <Provider store={store}>
+          <Route />
+        </Provider>
       </ThemeProvider>
     </History>
   </React.StrictMode>

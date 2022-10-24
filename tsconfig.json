@@ -6,7 +6,9 @@
       "@components/*": ["./src/Components/*"],
       "@utils": ["./src/Utils"],
       "@routes": ["./src/Routes"],
-      "@assets": ["./src/Assets"]
+      "@assets": ["./src/Assets"],
+      "@service": ["./src/Utils"],
+      "@store": ["./src/Store"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

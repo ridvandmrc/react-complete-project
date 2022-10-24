@@ -4,8 +4,13 @@ import { Navbar } from "@components/Dashboard";
 import { SearchCountries } from "@components/Common";
 import { Outlet } from "react-router";
 import { HeaderBackground } from "@assets";
+import { useSelector } from "react-redux";
+import { useLoader } from "@store";
+import { loaderService } from "src/Service";
 
 export const MainLayout: FC = () => {
+  const loader = useSelector(useLoader);
+  console.log("loader: ", loader);
   return (
     <>
       <Stack>
@@ -55,6 +60,7 @@ export const MainLayout: FC = () => {
                 marginTop: "3rem",
                 color: "background.paper",
               }}
+              onClick={() => loaderService.enableLoader()}
             >
               BOOK NOW
             </Button>

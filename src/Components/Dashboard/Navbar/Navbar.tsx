@@ -45,8 +45,7 @@ export const Navbar = () => {
   const MenuList: FC<{ inMenu?: boolean }> = ({ inMenu }) => (
     <>
       <MenuItem inMenu={inMenu} onClick={()=> navigate('./home')}>Home</MenuItem>
-      <MenuItem inMenu={inMenu} onClick={()=> navigate('./about')}>About</MenuItem>
-      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Service</MenuItem>
+      <MenuItem inMenu={inMenu} onClick={()=> navigate('./service')}>Service</MenuItem>
       <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Tour Package</MenuItem>
       <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Tour Package</MenuItem>
       <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Pages</MenuItem>
