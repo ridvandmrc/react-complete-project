@@ -9,4 +9,19 @@ export const DefaultTheme = createTheme({
     secondary: { main: '#7ab730' },
     grey: { '900': '#f3f3f3' },
   },
+  components: {
+    MuiCircularProgress: {
+      defaultProps: {
+        style: {
+          width: '100px',
+          height: '100px',
+        },
+      },
+      styleOverrides: {
+        root: {
+          color: '#1976d2',
+        },
+      },
+    },
+  },
 })

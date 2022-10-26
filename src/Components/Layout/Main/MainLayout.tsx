@@ -1,18 +1,19 @@
-import { FC } from "react";
+import { FC,  } from "react";
 import { Stack, Typography, Button } from "@mui/material";
 import { Navbar } from "@components/Dashboard";
-import { SearchCountries } from "@components/Common";
+import { Loader, SearchCountries } from "@components/Common";
 import { Outlet } from "react-router";
 import { HeaderBackground } from "@assets";
 import { useSelector } from "react-redux";
 import { useLoader } from "@store";
-import { loaderService } from "src/Service";
+import { jsonPlaceholder, loaderService } from "src/Service";
 
 export const MainLayout: FC = () => {
   const loader = useSelector(useLoader);
-  console.log("loader: ", loader);
+
   return (
     <>
+      <Loader show={loader} />
       <Stack>
         <Navbar />
         <Stack
@@ -60,7 +61,15 @@ export const MainLayout: FC = () => {
                 marginTop: "3rem",
                 color: "background.paper",
               }}
-              onClick={() => loaderService.enableLoader()}
+              onClick={() =>
+                jsonPlaceholder
+                  .getPlaceholder()
+                  .then(
+                    (data) => (
+                      console.log("data: ", data), loaderService.disableLoader()
+                    )
+                  )
+              }
             >
               BOOK NOW
             </Button>
