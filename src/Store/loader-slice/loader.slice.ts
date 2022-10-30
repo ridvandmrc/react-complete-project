@@ -1,19 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const loaderState = {
-  loader: false,
+  loader: 0,
 }
 
 const loaderStore = createSlice({
   name: 'loader-state',
   initialState: loaderState,
   reducers: {
-    setLoader: (state, payload) => {
-      state.loader = payload.payload.loader
+    increaseLoader: (state) => {
+      state.loader = state.loader += 1
+    },
+    decreaseLoader: (state) => {
+      state.loader = state.loader -= 1
     },
   },
 })
 
 export const loaderReducer = loaderStore.reducer
-export const setLoader = loaderStore.actions.setLoader
+export const increaseLoader = loaderStore.actions.increaseLoader
+export const decreaseLoader = loaderStore.actions.decreaseLoader
 export const useLoader = (state: any) => state.loader.loader

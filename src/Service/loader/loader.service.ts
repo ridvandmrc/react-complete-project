@@ -1,12 +1,12 @@
-import { store, setLoader } from '@store'
+import { store, increaseLoader, decreaseLoader } from '@store'
 
 class Loader {
-  public enableLoader() {
-    store.dispatch(setLoader({ loader: true }))
+  public increaseLoader() {
+    store.dispatch(increaseLoader())
   }
 
-  public disableLoader() {
-    store.dispatch(setLoader({ loader: false }))
+  public decreaseLoader() {
+    store.dispatch(decreaseLoader())
   }
 }
 

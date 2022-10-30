@@ -7,8 +7,9 @@
       "@utils": ["./src/Utils"],
       "@routes": ["./src/Routes"],
       "@assets": ["./src/Assets"],
-      "@service": ["./src/Utils"],
-      "@store": ["./src/Store"]
+      "@service": ["./src/Service"],
+      "@store": ["./src/Store"],
+      "@hooks": ["./src/Hooks"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -18,6 +19,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,

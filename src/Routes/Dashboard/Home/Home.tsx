@@ -1,14 +1,11 @@
 import { AboutImage, MosqueImage, ShipImage } from "@assets";
 import { Button, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
-import { FC } from "react";
-import { loaderService } from "src/Service";
-
+import { FC } from "react"; 
 export const Home: FC = () => {
   const matches = useMediaQuery((theme) =>
     (theme as any).breakpoints.down("sm")
   );
 
-  console.log("loo: ", matches);
   return (
     <>
       <Typography
@@ -71,7 +68,6 @@ export const Home: FC = () => {
                 marginTop: "3rem",
                 color: "background.paper",
               }}
-              onClick={() => loaderService.disableLoader()}
             >
               Book Now
             </Button>

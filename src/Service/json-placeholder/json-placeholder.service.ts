@@ -2,11 +2,11 @@ import { httpService } from '../http-service/http.service'
 
 class JsonPlaceholder {
   private getUri() {
-    return 'https://jsonplaceholder.typicode.com/todos/1'
+    return 'https://jsonplaceholder.typicode.com/todos'
   }
 
   public getPlaceholder() {
-    return httpService.get(this.getUri())
+    return httpService.get<JsonPlaceholder[]>(this.getUri())
   }
 }
 

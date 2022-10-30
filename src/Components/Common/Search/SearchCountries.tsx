@@ -11,14 +11,14 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { SampleDatePicker } from "../DesktopDatepicker";
+import { useService } from "@hooks";
+import { JsonPlaceholder, jsonPlaceholder } from "@service";
 
-
-
-
-const SampleSelect: FC<{ label: string; matches: boolean }> = ({
-  label,
-  matches,
-}) => (
+const SampleSelect: FC<{
+  label: string;
+  matches: boolean;
+  data: JsonPlaceholder[];
+}> = ({ label, matches, data }) => (
   <FormControl fullWidth sx={{ margin: matches ? "0" : "0 1vw" }}>
     <InputLabel
       id="demo-simple-select-label"
@@ -31,9 +31,15 @@ const SampleSelect: FC<{ label: string; matches: boolean }> = ({
       labelId="demo-simple-select-label"
       id="demo-simple-select"
     >
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
+      {data?.slice(0, 10).map((item, index) => (
+        <MenuItem
+          key={`index-${index}-${item.id}`}
+          disabled={item?.isCompleted()}
+          value={item.id}
+        >
+          {item.title}
+        </MenuItem>
+      ))}
     </Select>
   </FormControl>
 );
@@ -51,6 +57,11 @@ const SearchGrid: FC<ISearchGridProps> = ({ children, ...props }) => (
 export const SearchCountries = () => {
   const matches = useMediaQuery((theme) =>
     (theme as any).breakpoints.down("lg")
+  );
+
+  const { data } = useService<JsonPlaceholder[]>(
+    jsonPlaceholder.getPlaceholder(),
+    JsonPlaceholder
   );
 
   return (
@@ -73,7 +84,7 @@ export const SearchCountries = () => {
     >
       <Grid container columns={6} justifyContent="space-between" spacing={1}>
         <SearchGrid item>
-          <SampleSelect matches label="Destination" />
+          <SampleSelect data={data} matches label="Destination" />
         </SearchGrid>
         <SearchGrid item>
           <SampleDatePicker label="Start Date" />
@@ -82,7 +93,7 @@ export const SearchCountries = () => {
           <SampleDatePicker label="End Date" />
         </SearchGrid>
         <SearchGrid item>
-          <SampleSelect matches label="Duration" />
+          <SampleSelect data={data} matches label="Duration" />
         </SearchGrid>
         <SearchGrid
           lg={1}

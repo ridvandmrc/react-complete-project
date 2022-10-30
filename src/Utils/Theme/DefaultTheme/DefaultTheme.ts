@@ -19,7 +19,7 @@ export const DefaultTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          color: '#1976d2',
+          color: '#7ab730',
         },
       },
     },

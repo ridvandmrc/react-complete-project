@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { loaderService } from '../loader'
 
 class HttpService {
   constructor() {
@@ -16,7 +15,6 @@ class HttpService {
     url: string,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> {
-    loaderService.enableLoader()
     return axios.get<T>(url, config).then()
   }
 }

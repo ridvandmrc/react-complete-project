@@ -12,7 +12,7 @@ export const Loader: FC<ILoaderProps> = ({ show }) => {
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.5)",
-        zIndex: 3,
+        zIndex: 1000,
       }}
     >
       <CircularProgress sx={{ margin: "auto" }} color="primary" />

@@ -9,9 +9,9 @@ export const DashboardRouter: RouteObject[] = [
     path: "/main",
     element: <MainLayout />,
     children: [
-      { path: "/main/home", element: <Home /> },
-      { path: "/main/about", element: <About /> },
-      { path: "/main/service", element: <Service /> },
+      { path: "home", element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "service", element: <Service /> },
     ],
   },
 ];
