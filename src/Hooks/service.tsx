@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { loaderService } from "@service";
 import { plainToInstance } from "class-transformer";
+import { addMessage } from "src/Store/notification-slice";
 
 export const useService = <T,>(
   promise: Promise<unknown>,
@@ -16,6 +17,7 @@ export const useService = <T,>(
     promise
       .then((data: any) => {
         setData(data.data);
+        addMessage("uploaded successfully");
       })
       .finally(() => loaderService.decreaseLoader());
   }, [counter, ...deps]);

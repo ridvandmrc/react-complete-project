@@ -1,18 +1,21 @@
 import { FC } from "react";
 import { Stack, Typography, Button } from "@mui/material";
 import { Navbar } from "@components/Dashboard";
-import { Loader, SearchCountries } from "@components/Common";
+import { Loader, SearchCountries, Notification } from "@components/Common";
 import { Outlet } from "react-router";
 import { HeaderBackground } from "@assets";
 import { useSelector } from "react-redux";
 import { useLoader } from "@store";
+import { useNotification } from "src/Store/notification-slice";
 
 export const MainLayout: FC = () => {
   const loader = useSelector(useLoader);
+  const notification = useSelector(useNotification);
 
   return (
     <>
       <Loader show={loader > 0} />
+      <Notification message={notification.message} />
       <Stack>
         <Navbar />
         <Stack
