@@ -1,7 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useEffect } from "react";
 import { loaderService } from "@service";
 import { plainToInstance } from "class-transformer";
 import { addMessage } from "src/Store/notification-slice";
+import { logService } from "src/Service/log";
 
 export const useService = <T,>(
   promise: Promise<unknown>,
@@ -16,8 +19,12 @@ export const useService = <T,>(
     loaderService.increaseLoader();
     promise
       .then((data: any) => {
+        logService.success(`Data get Successfully:  ${data.data}`);
         setData(data.data);
         addMessage("uploaded successfully");
+      })
+      .catch((err) => {
+        logService.error(err);
       })
       .finally(() => loaderService.decreaseLoader());
   }, [counter, ...deps]);

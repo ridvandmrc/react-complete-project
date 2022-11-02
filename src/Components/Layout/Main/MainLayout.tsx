@@ -6,7 +6,7 @@ import { Outlet } from "react-router";
 import { HeaderBackground } from "@assets";
 import { useSelector } from "react-redux";
 import { useLoader } from "@store";
-import { useNotification } from "src/Store/notification-slice";
+import { addMessage, useNotification } from "src/Store/notification-slice";
 
 export const MainLayout: FC = () => {
   const loader = useSelector(useLoader);
@@ -63,15 +63,7 @@ export const MainLayout: FC = () => {
                 marginTop: "3rem",
                 color: "background.paper",
               }}
-              /* onClick={() =>
-                jsonPlaceholder
-                  .getPlaceholder()
-                  .then(
-                    (data) => (
-                      console.log("data: ", data), loaderService.disableLoader()
-                    )
-                  )
-              } */
+              onClick={() => addMessage("Book now")}
             >
               BOOK NOW
             </Button>
