@@ -38,10 +38,18 @@ export const Service = () => {
   return (
     <Stack sx={{ padding: "2rem" }}>
       <Stack justifyContent="center" direction="column" alignItems="center">
-        <Typography variant="h4" color="secondary.main">
+        <Typography
+          variant="h4"
+          color="secondary.main"
+          sx={{ fontSize: "calc(1rem + 2vw)" }}
+        >
           SERVİCES
         </Typography>
-        <Typography variant="h2" color="primary.main">
+        <Typography
+          variant="h2"
+          color="primary.main"
+          sx={{ fontSize: "calc(1rem + 2vw)" }}
+        >
           Tours & Travel Services
         </Typography>
       </Stack>
