@@ -7,7 +7,7 @@ import { addMessage } from "src/Store/notification-slice";
 import { logService } from "src/Service/log";
 
 export const useService = <T,>(
-  promise: Promise<unknown>,
+  promise: () => Promise<unknown>,
   classType: any,
   deps: unknown[] = []
 ) => {
@@ -17,14 +17,15 @@ export const useService = <T,>(
 
   useEffect(() => {
     loaderService.increaseLoader();
-    promise
+    promise()
       .then((data: any) => {
         logService.success(`Data get Successfully:  ${data.data}`);
-        setData(data.data);
+        setData(data.data.data);
         addMessage("uploaded successfully");
       })
       .catch((err) => {
         logService.error(err);
+        addMessage("Error", "error");
       })
       .finally(() => loaderService.decreaseLoader());
   }, [counter, ...deps]);

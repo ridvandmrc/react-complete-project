@@ -1,8 +1,11 @@
 import { FC } from "react";
-import { Snackbar } from "@mui/material";
+import { Alert, AlertColor, Snackbar } from "@mui/material";
 import { addMessage } from "src/Store/notification-slice";
 
-export const Notification: FC<{ message: string }> = ({ message }) => {
+export const Notification: FC<{ message: string; severity: AlertColor }> = ({
+  message,
+  severity = "info",
+}) => {
   return (
     <Snackbar
       open={!!message}
@@ -10,6 +13,10 @@ export const Notification: FC<{ message: string }> = ({ message }) => {
       message={message}
       autoHideDuration={3000}
       anchorOrigin={{ horizontal: "right", vertical: "top" }}
-    />
+    >
+      <Alert variant="filled" severity={severity}>
+        {message}
+      </Alert>
+    </Snackbar>
   );
 };

@@ -12,12 +12,12 @@ import {
 } from "@mui/material";
 import { SampleDatePicker } from "../DesktopDatepicker";
 import { useService } from "@hooks";
-import { JsonPlaceholder, jsonPlaceholder } from "@service";
+import { Country, countryService } from "@service";
 
 const SampleSelect: FC<{
   label: string;
   matches: boolean;
-  data: JsonPlaceholder[];
+  data: Country[];
 }> = ({ label, matches, data }) => (
   <FormControl fullWidth sx={{ margin: matches ? "0" : "0 1vw" }}>
     <InputLabel
@@ -32,12 +32,8 @@ const SampleSelect: FC<{
       id="demo-simple-select"
     >
       {data?.slice(0, 10).map((item, index) => (
-        <MenuItem
-          key={`index-${index}-${item.id}`}
-          disabled={item?.isCompleted()}
-          value={item.id}
-        >
-          {item.title}
+        <MenuItem key={`index-${index}-${item.id}`} value={item.id}>
+          {item.country}
         </MenuItem>
       ))}
     </Select>
@@ -59,9 +55,9 @@ export const SearchCountries = () => {
     (theme as any).breakpoints.down("lg")
   );
 
-  const { data } = useService<JsonPlaceholder[]>(
-    jsonPlaceholder.getPlaceholder(),
-    JsonPlaceholder
+  const { data } = useService<Country[]>(
+    () => countryService.getCountries(),
+    Country
   );
 
   return (
@@ -84,7 +80,7 @@ export const SearchCountries = () => {
     >
       <Grid container columns={6} justifyContent="space-between" spacing={1}>
         <SearchGrid item>
-          <SampleSelect data={data} matches label="Destination" />
+          <SampleSelect data={data} matches label="From" />
         </SearchGrid>
         <SearchGrid item>
           <SampleDatePicker label="Start Date" />
@@ -93,7 +89,7 @@ export const SearchCountries = () => {
           <SampleDatePicker label="End Date" />
         </SearchGrid>
         <SearchGrid item>
-          <SampleSelect data={data} matches label="Duration" />
+          <SampleSelect data={data} matches label="To" />
         </SearchGrid>
         <SearchGrid
           lg={1}

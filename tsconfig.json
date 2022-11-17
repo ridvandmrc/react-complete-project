@@ -9,7 +9,8 @@
       "@assets": ["./src/Assets"],
       "@service": ["./src/Service"],
       "@store": ["./src/Store"],
-      "@hooks": ["./src/Hooks"]
+      "@hooks": ["./src/Hooks"],
+      "@config": ["./src/Config"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

@@ -9,6 +9,7 @@ module.exports = function override(config) {
     "@service": "./src/Service",
     "@store": "./src/Store",
     "@hooks": "./src/Hooks",
+    "@config":"./src/Config"
   })(config);
 
   return config;
