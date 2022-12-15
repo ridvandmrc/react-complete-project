@@ -49,7 +49,7 @@ export const Navbar = () => {
       <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Tour Package</MenuItem>
       <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Tour Package</MenuItem>
       <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Pages</MenuItem>
-      <MenuItem inMenu={inMenu} /* onClick={()=> navigate()} */>Contact Us</MenuItem>
+      <MenuItem inMenu={inMenu}  onClick={()=> navigate('./contact')} >Contact Us</MenuItem>
     </>
   );
 
